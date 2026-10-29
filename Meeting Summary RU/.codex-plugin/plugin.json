@@ -1,0 +1,25 @@
+{
+  "name": "meeting-summary-ru",
+  "version": "1.0.0",
+  "description": "Russian meeting summaries from transcripts with decisions, tasks, deadlines, risks, and open questions.",
+  "author": {
+    "name": "ROSECO"
+  },
+  "keywords": [
+    "meeting-summary",
+    "transcript",
+    "russian"
+  ],
+  "skills": "./skills",
+  "interface": {
+    "displayName": "Саммари совещаний",
+    "shortDescription": "Решения и задачи из встреч",
+    "longDescription": "Русскоязычные саммари по одной или нескольким стенограммам: решения, результаты, поручения, сроки, зависимости, риски и открытые вопросы.",
+    "developerName": "ROSECO",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive"
+    ],
+    "defaultPrompt": "Подготовь саммари совещания по стенограмме: выдели решения, результаты, поручения, ответственных, сроки, риски и открытые вопросы."
+  }
+}

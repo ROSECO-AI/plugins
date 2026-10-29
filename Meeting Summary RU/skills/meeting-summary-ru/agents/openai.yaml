@@ -1,0 +1,3 @@
+interface:
+  display_name: "Саммари совещаний"
+  short_description: "Решения и задачи из стенограммы встречи"

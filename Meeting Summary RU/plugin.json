@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "meeting-summary-ru",
+  "version": "1.0.0",
+  "description": "Russian meeting summaries from transcripts with decisions, tasks, deadlines, risks, and open questions.",
+  "homepage": "https://github.com/ROSECO-AI/plugins/tree/main/Meeting%20Summary%20RU",
+  "repository": "https://github.com/ROSECO-AI/plugins",
+  "author": {
+    "name": "ROSECO"
+  },
+  "keywords": [
+    "meeting-summary",
+    "transcript",
+    "russian"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Саммари совещаний",
+        "shortDescription": "Решения и задачи из встреч",
+        "longDescription": "Русскоязычные саммари по одной или нескольким стенограммам: решения, результаты, поручения, сроки, зависимости, риски и открытые вопросы.",
+        "developerName": "ROSECO",
+        "category": "Productivity",
+        "capabilities": [
+          "Interactive"
+        ],
+        "defaultPrompt": "Подготовь саммари совещания по стенограмме: выдели решения, результаты, поручения, ответственных, сроки, риски и открытые вопросы."
+      }
+    }
+  }
+}
