@@ -26,4 +26,13 @@
 
 Исходники опубликованы в приватном репозитории `ROSECO-AI/plugins` в каталоге `Archviz Revit Render/`. Репозиторий содержит каталог `.agents/plugins/marketplace.json` для установки через локальный маркетплейс Codex. Установка на одном компьютере не обновляет удалённый плагин в учётной записи.
 
+Для установки на Mac или Windows с доступом к приватному GitHub-репозиторию:
+
+```bash
+codex plugin marketplace add ROSECO-AI/plugins --ref main
+codex plugin add archviz-revit-render@roseco-ai-plugins
+```
+
+После установки проверьте `codex plugin list` и откройте новый чат Codex. Для получения новых версий обновляйте источник командой `codex plugin marketplace upgrade roseco-ai-plugins`, затем переустанавливайте плагин по поддерживаемому сценарию клиента.
+
 Тестовые рендеры котельной от 13.10.2026 остаются в прежней рабочей папке и не входят в исходный пакет плагина. Путь и краткие выводы указаны в `CURRENT_STATE.md`.
