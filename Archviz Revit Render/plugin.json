@@ -1,0 +1,24 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "archviz-revit-render",
+  "version": "2.1.1",
+  "description": "Revit/BIM screenshot to photorealistic architectural render workflow with site-plan grounding and multi-view scene consistency.",
+  "author": {
+    "name": "ROSECO"
+  },
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Archviz Revit Render",
+        "shortDescription": "Рендеры Revit и BIM",
+        "longDescription": "Фотореалистичные рендеры по видам BIM-модели с опорой на генплан и единую мастер-сцену.",
+        "developerName": "ROSECO",
+        "category": "Productivity",
+        "capabilities": [
+          "Interactive"
+        ],
+        "defaultPrompt": "Подготовь рендеры на основе скриншотов Revit. Начни с запроса основных видов, затем отдельно запроси вспомогательные материалы."
+      }
+    }
+  }
+}

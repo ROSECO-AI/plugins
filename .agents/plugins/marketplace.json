@@ -1,0 +1,20 @@
+{
+  "name": "roseco-ai-plugins",
+  "interface": {
+    "displayName": "ROSECO AI Plugins"
+  },
+  "plugins": [
+    {
+      "name": "archviz-revit-render",
+      "source": {
+        "source": "local",
+        "path": "./Archviz Revit Render"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
