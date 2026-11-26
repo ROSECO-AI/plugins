@@ -1,0 +1,7 @@
+config.json
+data/
+output/
+*.log
+__pycache__/
+*.py[cod]
+.DS_Store

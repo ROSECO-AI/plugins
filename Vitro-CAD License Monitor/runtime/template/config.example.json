@@ -1,0 +1,16 @@
+{
+  "base_url": "https://vitro.example.ru",
+  "login": "monitor@example.ru",
+  "user_list_id": "",
+  "active_license_field": "",
+  "content_type_field": "content_type_id",
+  "user_content_type_name": "Пользователь",
+  "web_capacity": 20,
+  "pro_capacity": 20,
+  "warning_ratio": 0.8,
+  "timezone": "Europe/Moscow",
+  "stale_after_minutes": 120,
+  "database_path": "data/license_monitor.sqlite3",
+  "dashboard_path": "output/license-dashboard.html",
+  "token_expires_at": ""
+}

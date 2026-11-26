@@ -1,0 +1,8 @@
+interface:
+  display_name: "Мониторинг лицензий Vitro-CAD"
+  short_description: "Локальный мониторинг WEB и PRO"
+  default_prompt: "Настрой read-only мониторинг занятости лицензий WEB и PRO в Vitro-CAD и проверь первый живой замер."
+policy:
+  allow_implicit_invocation: true
+  products:
+    - CODEX
