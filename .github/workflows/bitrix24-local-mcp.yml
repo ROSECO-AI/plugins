@@ -31,5 +31,5 @@ jobs:
       - name: Codex MCP registration and plugin installation (isolated profile)
         env:
           CODEX_HOME: ${{ runner.temp }}/bitrix24-codex-test
-          TEST_CONFIG: ${{ runner.temp }}/bitrix24-test/config.json
+          TEST_CONFIG: ${{ runner.temp }}/bitrix24 тест с пробелами/config.json
         run: python bitrix24-local-mcp/tests/check_codex_install.py

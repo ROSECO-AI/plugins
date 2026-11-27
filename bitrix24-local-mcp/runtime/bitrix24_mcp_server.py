@@ -208,6 +208,7 @@ class Client:
         if http_status or data.get("error"):
             code = data.get("error", "HTTP_ERROR")
             code = code if isinstance(code, str) and re.fullmatch(r"[A-Za-z0-9_]{1,80}", code) else "API_ERROR"
+            code = self.redact(code)
             # Do not echo error_description or exception strings: servers may reflect credentials.
             raise ConnectorError(f"Bitrix24 {code}; HTTP {http_status or 200}. Check scopes, user rights, subscription and method. No retry performed.")
         # Preserve next/total/time: the caller must explicitly traverse all needed pages.

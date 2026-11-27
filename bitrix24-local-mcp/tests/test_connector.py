@@ -132,6 +132,12 @@ class ConnectorTests(unittest.TestCase):
         self.assertIn("INVALID_CREDENTIALS", str(result))
         self.assertNotIn("synthetic_secret_123456", str(result))
 
+    def test_even_error_code_cannot_echo_secret(self):
+        self.response({"error": "synthetic_secret_123456"})
+        result = m.call_tool(self.client, "bitrix24_call_method", {"method": "profile"})
+        self.assertTrue(result["isError"])
+        self.assertNotIn("synthetic_secret_123456", str(result))
+
     def test_no_write_retry_after_timeout(self):
         self.client.writes = True
         self.client.opener.open = Mock(side_effect=TimeoutError(HOOK))
