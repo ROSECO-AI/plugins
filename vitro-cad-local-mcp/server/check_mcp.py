@@ -51,4 +51,8 @@ def main() -> int:
 
 
 if __name__ == "__main__":
+    # GitHub Windows runners and older terminals may select a legacy code page.
+    for stream in (sys.stdout, sys.stderr):
+        if hasattr(stream, "reconfigure"):
+            stream.reconfigure(encoding="utf-8", errors="replace")
     raise SystemExit(main())
