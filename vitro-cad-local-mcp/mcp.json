@@ -1,0 +1,11 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "vitro-cad-local": {
+      "type": "stdio",
+      "command": "cmd.exe",
+      "args": ["/d", "/c", "${PLUGIN_ROOT}/start_server.cmd"],
+      "cwd": "${PLUGIN_ROOT}"
+    }
+  }
+}
