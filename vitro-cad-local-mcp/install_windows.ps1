@@ -333,7 +333,7 @@ if ($installCodex -and -not $pluginInstalled) {
         }
     }
     New-Item -ItemType Directory -Force -Path $skillPath | Out-Null
-    Copy-Item -Path (Join-Path $destination 'skills\vitro-cad\*') -Destination $skillPath -Recurse -Force
+    Copy-Item -Path (Join-Path $destination 'skills\vitro-cad-local-mcp\*') -Destination $skillPath -Recurse -Force
     New-Item -ItemType File -Force -Path (Join-Path $skillPath '.vitro-cad-local-mcp-managed') | Out-Null
     Write-Host 'Codex Desktop настроен для работы с Vitro-CAD.'
 }
