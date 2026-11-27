@@ -1,0 +1,29 @@
+name: Vitro-CAD local MCP
+on:
+  pull_request:
+    paths:
+      - 'vitro-cad-local-mcp/**'
+      - '.github/workflows/vitro-cad-local-mcp.yml'
+  push:
+    paths:
+      - 'vitro-cad-local-mcp/**'
+      - '.github/workflows/vitro-cad-local-mcp.yml'
+jobs:
+  test:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Python unit tests and MCP discovery
+        run: |
+          python -m unittest discover -s vitro-cad-local-mcp/tests -v
+          python vitro-cad-local-mcp/server/check_mcp.py
+      - name: PowerShell installer syntax
+        shell: powershell
+        run: |
+          $tokens = $null
+          $errors = $null
+          [System.Management.Automation.Language.Parser]::ParseFile((Join-Path $PWD 'vitro-cad-local-mcp/install_windows.ps1'), [ref]$tokens, [ref]$errors) | Out-Null
+          if ($errors.Count -gt 0) { $errors | Format-List | Out-String | Write-Host; exit 1 }

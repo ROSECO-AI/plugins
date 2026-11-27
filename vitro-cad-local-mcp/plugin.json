@@ -1,0 +1,24 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "vitro-cad-local-mcp",
+  "version": "1.0.0",
+  "description": "Локальный MCP для Vitro-CAD MP с адресом портала и личным входом каждого пользователя.",
+  "homepage": "https://github.com/ROSECO-AI/plugins/tree/main/vitro-cad-local-mcp",
+  "repository": "https://github.com/ROSECO-AI/plugins",
+  "license": "MIT",
+  "author": {"name": "ROSECO AI"},
+  "keywords": ["vitro-cad", "mcp", "windows", "rest"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Vitro-CAD — локальный MCP",
+        "shortDescription": "Подключение своего портала Vitro-CAD",
+        "longDescription": "Локальный сервер Vitro-CAD MP: установка для Windows, адрес своего портала, личный вход, чтение и доступные пользователю изменения.",
+        "developerName": "ROSECO AI",
+        "category": "Productivity",
+        "capabilities": [],
+        "defaultPrompt": "Помоги подключить мой портал Vitro-CAD по инструкции плагина. Пароль я введу только в окне установщика. После подключения проверь мою учётную запись без создания или изменения элементов."
+      }
+    }
+  }
+}

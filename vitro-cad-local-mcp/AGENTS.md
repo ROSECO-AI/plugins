@@ -1,0 +1,3 @@
+# Vitro-CAD Local MCP
+
+Only publish synthetic examples. Never read or commit real portal credentials, addresses, GUIDs, project exports, or private PDFs. Do not migrate the ROSECO-only package into this public plugin. Keep TLS verification and per-user DPAPI storage. Do not retry writes after ambiguous responses. The project registry GUID is portal-specific and optional. Validate URL input and stop on API redirects to prevent token disclosure. Keep Windows installation and all selected clients in sync with code and docs. Run unit tests and static checks; report that live Windows login and writes require separate verification on an authorized account.

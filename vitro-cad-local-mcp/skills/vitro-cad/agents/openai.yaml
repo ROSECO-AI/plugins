@@ -1,0 +1,4 @@
+interface:
+  display_name: "Vitro-CAD — локальный MCP"
+  short_description: "Справка Vitro-CAD и работа со своим порталом"
+  default_prompt: "Use $vitro-cad-local-mcp to help with my configured Vitro-CAD portal. First verify the current account with vitro_whoami."

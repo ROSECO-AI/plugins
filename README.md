@@ -4,10 +4,16 @@
 
 ## Доступные плагины
 
+- [Vitro-CAD — локальный MCP](vitro-cad-local-mcp/) версии **1.0.0** — адрес своего портала, личный вход и подключение к Codex Desktop, Claude Code или Qwen Code на Windows.
+
 - [Битрикс24 — локальный MCP](bitrix24-local-mcp/) версии **1.0.0** — Python-коннектор с универсальным REST-вызовом, собственным вебхуком пользователя и установкой на Windows/macOS/Linux. [Сравнение с официальным MCP](bitrix24-local-mcp/docs/comparison.md).
 - [Archviz Revit Render](Archviz%20Revit%20Render/) версии **2.1.1** — подготовка фотореалистичных архитектурных рендеров по видам Revit/BIM, генпланам, чертежам и фотографиям.
 - [Саммари совещаний](Meeting%20Summary%20RU/) версии **1.0.0** — русскоязычные саммари по стенограммам с решениями, поручениями, сроками, рисками и открытыми вопросами.
 - [Мониторинг лицензий Vitro-CAD](Vitro-CAD%20License%20Monitor/) версии **1.0.0** — развёртывание локального read-only мониторинга WEB/PRO с SQLite-историей и HTML-дашбордом.
+
+## Установка Vitro-CAD — локальный MCP
+
+Скачайте [установщик для Windows](vitro-cad-local-mcp/README.md) и укажите в форме **адрес своего портала**, личные логин и пароль, а также нужный агент: Codex Desktop, Claude Code или Qwen Code. [Пошаговая инструкция](vitro-cad-local-mcp/INSTALL.md). Доступ ограничен вашей учётной записью Vitro-CAD.
 
 ## Установка Archviz Revit Render
 
