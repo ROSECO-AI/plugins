@@ -20,8 +20,10 @@ codex plugin list
 ```
 
 Начните новый чат с установленным плагином. Агент найдёт `runtime/install.py` внутри
-плагина. Можно также скачать исходники [репозитория](https://github.com/ROSECO-AI/plugins)
-через Code → Download ZIP, распаковать и открыть папку `bitrix24-local-mcp`.
+плагина. Можно также скачать [архив релиза](https://github.com/ROSECO-AI/plugins/releases/tag/bitrix24-local-mcp-v1.0.0)
+или исходники [репозитория](https://github.com/ROSECO-AI/plugins) через Code → Download ZIP,
+распаковать и открыть папку `bitrix24-local-mcp`. Архив содержит код для шагов 2–5;
+он сам по себе не регистрирует навык плагина в Codex.
 
 ## 2. Развёртывание локального сервера
 
