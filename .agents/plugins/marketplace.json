@@ -5,6 +5,12 @@
   },
   "plugins": [
     {
+      "name": "bitrix24-local-mcp",
+      "source": {"source": "local", "path": "./bitrix24-local-mcp"},
+      "policy": {"installation": "AVAILABLE", "authentication": "ON_INSTALL"},
+      "category": "Productivity"
+    },
+    {
       "name": "archviz-revit-render",
       "source": {
         "source": "local",

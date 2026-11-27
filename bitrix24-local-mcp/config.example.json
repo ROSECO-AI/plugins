@@ -1,0 +1,5 @@
+{
+  "portal": "https://portal.example.org",
+  "webhook_url": "https://portal.example.org/rest/1/REPLACE_LOCALLY/",
+  "writes_enabled": false
+}

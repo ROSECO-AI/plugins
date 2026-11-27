@@ -1,0 +1,24 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "bitrix24-local-mcp",
+  "version": "1.0.0",
+  "description": "Local Python MCP connector to Bitrix24 REST API with per-user webhook setup, read-only defaults and explicit write tools.",
+  "homepage": "https://github.com/ROSECO-AI/plugins/tree/main/bitrix24-local-mcp",
+  "repository": "https://github.com/ROSECO-AI/plugins",
+  "license": "MIT",
+  "author": {"name": "ROSECO AI"},
+  "keywords": ["bitrix24", "mcp", "python", "rest", "webhook"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Битрикс24 — локальный MCP",
+        "shortDescription": "REST API через свой вебхук",
+        "longDescription": "Установка локального Python MCP-сервера для вашего портала Битрикс24. Код включён в плагин. Windows, macOS и Linux; отдельное хранение вебхука, сохранение страниц API и контролируемая запись.",
+        "developerName": "ROSECO AI",
+        "category": "Productivity",
+        "capabilities": [],
+        "defaultPrompt": "Настрой локальный MCP для моего Битрикс24 по инструкции плагина. Сам выполни техническую подготовку; запроси только адрес портала и необходимые действия для безопасного ввода вебхука. Проверь чтение."
+      }
+    }
+  }
+}

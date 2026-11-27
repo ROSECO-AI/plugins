@@ -1,0 +1,35 @@
+name: Bitrix24 local MCP
+on:
+  push:
+    paths: ['bitrix24-local-mcp/**', '.github/workflows/bitrix24-local-mcp.yml', '.agents/plugins/marketplace.json']
+  pull_request:
+    paths: ['bitrix24-local-mcp/**', '.github/workflows/bitrix24-local-mcp.yml', '.agents/plugins/marketplace.json']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python: ['3.10', '3.13']
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Unit and real stdio tests (synthetic data only)
+        working-directory: bitrix24-local-mcp
+        run: python -m unittest discover -s tests -v
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Codex CLI
+        run: npm install -g @openai/codex
+      - name: Codex MCP registration and plugin installation (isolated profile)
+        env:
+          CODEX_HOME: ${{ runner.temp }}/bitrix24-codex-test
+          TEST_CONFIG: ${{ runner.temp }}/bitrix24-test/config.json
+        run: python bitrix24-local-mcp/tests/check_codex_install.py
