@@ -50,9 +50,9 @@ class ConnectorError(Exception):
 
 def default_config_path() -> Path:
     if os.name == "nt":
-        base = Path(os.environ.get("APPDATA", str(Path.home() / "AppData" / "Roaming")))
+        base = Path(os.environ["APPDATA"]) if os.environ.get("APPDATA") else Path.home() / "AppData" / "Roaming"
     else:
-        base = Path(os.environ.get("XDG_CONFIG_HOME", str(Path.home() / ".config")))
+        base = Path(os.environ["XDG_CONFIG_HOME"]) if os.environ.get("XDG_CONFIG_HOME") else Path.home() / ".config"
     return base / "bitrix24-local-mcp" / "config.json"
 
 
@@ -351,8 +351,13 @@ def serve(client):
 
 
 def main():
+    # MCP stdio is UTF-8 even when Windows redirects a legacy code-page stream.
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8")
+    if hasattr(sys.stderr, "reconfigure"):
+        sys.stderr.reconfigure(encoding="utf-8")
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--config", type=Path, default=default_config_path())
+    parser.add_argument("--config", type=Path)
     actions = parser.add_mutually_exclusive_group()
     actions.add_argument("--configure", action="store_true", help="Secure local terminal input; never send webhook through chat")
     actions.add_argument("--enable-writes", action="store_true", help="User-authorized local setting; host approval is still required")
@@ -362,6 +367,7 @@ def main():
     parser.add_argument("--portal", help="Expected public HTTPS portal address, no secrets")
     args = parser.parse_args()
     try:
+        args.config = args.config or default_config_path()
         if args.configure:
             if not sys.stdin.isatty():
                 raise ConnectorError("Configure requires a local interactive terminal, not an agent tool or pipe.")

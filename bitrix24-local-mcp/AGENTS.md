@@ -17,4 +17,3 @@ never commit portal exports, tokens, local user paths or personal identities.
 - Run `python3 -m unittest discover -s tests -v` from this directory before release.
 - CI must run on Windows, macOS and Linux. Use only synthetic credentials in tests.
 - Publish to the existing ROSECO-AI/plugins marketplace, preserving other plugins.
-

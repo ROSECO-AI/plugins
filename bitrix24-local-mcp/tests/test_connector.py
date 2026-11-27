@@ -25,7 +25,8 @@ class ConnectorTests(unittest.TestCase):
         self.tmp = tempfile.TemporaryDirectory()
         self.addCleanup(self.tmp.cleanup)
         self.path = Path(self.tmp.name) / "config.json"
-        self.env = patch.dict(os.environ, {}, clear=True)
+        # Keep SYSTEMROOT, USERPROFILE and TLS-related variables on Windows.
+        self.env = patch.dict(os.environ, {"BITRIX24_WEBHOOK_URL": ""})
         self.env.start()
         self.addCleanup(self.env.stop)
         m.save_config(self.path, {"portal": "https://portal.example.org", "webhook_url": HOOK, "writes_enabled": False})
@@ -200,12 +201,24 @@ class ConnectorTests(unittest.TestCase):
                     {"jsonrpc": "2.0", "id": 2, "method": "tools/list"},
                     {"jsonrpc": "2.0", "id": 3, "method": "tools/call", "params": {"name": "bitrix24_status", "arguments": {}}}]
         proc = subprocess.run([sys.executable, "-u", str(ROOT / "runtime/bitrix24_mcp_server.py"), "--config", str(self.path)],
-                              input="\n".join(json.dumps(x) for x in messages) + "\n", text=True, capture_output=True, timeout=10)
+                              input="\n".join(json.dumps(x) for x in messages) + "\n", text=True, encoding="utf-8", capture_output=True, timeout=10)
         self.assertEqual(proc.returncode, 0, proc.stderr)
         replies = [json.loads(x) for x in proc.stdout.splitlines()]
         self.assertEqual([x["id"] for x in replies], [1, 2, 3])
         self.assertEqual(len(replies[1]["result"]["tools"]), 7)
         self.assertNotIn("synthetic_secret_123456", proc.stdout + proc.stderr)
+
+    def test_utf8_stdio_with_windows_style_legacy_encoding(self):
+        path = Path(self.tmp.name) / "папка с пробелами" / "config.json"
+        data = [{"jsonrpc": "2.0", "id": 1, "method": "initialize"},
+                {"jsonrpc": "2.0", "id": 2, "method": "tools/call", "params": {"name": "bitrix24_status"}}]
+        proc = subprocess.run([sys.executable, str(ROOT / "runtime/bitrix24_mcp_server.py"), "--config", str(path)],
+                              input="\n".join(json.dumps(x) for x in data) + "\n", text=True, encoding="utf-8",
+                              env={**os.environ, "PYTHONIOENCODING": "cp1252"}, capture_output=True, timeout=10)
+        self.assertEqual(proc.returncode, 0, proc.stderr)
+        replies = [json.loads(x) for x in proc.stdout.splitlines()]
+        self.assertFalse(replies[-1]["result"]["isError"])
+        self.assertIn("папка с пробелами", proc.stdout)
 
     def test_cli_check_outputs_no_profile_data(self):
         with patch.object(m.Client, "call", return_value={"result": {"NAME": "Synthetic Personal Data"}}), \

@@ -26,7 +26,7 @@ def run_codex(executable, args):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--config", type=Path, default=default_config_path())
+    parser.add_argument("--config", type=Path)
     parser.add_argument("--server-name", default="bitrix24-local")
     parser.add_argument("--codex", help="Absolute Codex CLI path if not on PATH")
     parser.add_argument("--prepare-only", action="store_true", help="Deploy files without registering MCP")
@@ -36,7 +36,7 @@ def main():
     import re
     if not re.fullmatch(r"[A-Za-z0-9_-]+", args.server_name):
         parser.error("Server name must contain only letters, digits, hyphens, underscores")
-    config = args.config.expanduser().resolve()
+    config = (args.config or default_config_path()).expanduser().resolve()
     target = config.parent / "runtime" / "bitrix24_mcp_server.py"
     source = Path(__file__).with_name("bitrix24_mcp_server.py")
     codex = args.codex or shutil.which("codex")
